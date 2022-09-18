@@ -9,15 +9,22 @@ const app = Vue.createApp({
             monsterHealth: 100,
         }
     },
+    computed:{
+        monsterHealthBar(){
+            return { width: this.monsterHealth + '%' }
+        },
+        playerHealthBar(){
+            return { width: this.playerHealth + '%' }
+        }
+    },
     methods: {
         attackMonster(){
             const attackValue = getRandomValue(12 , 5)
-            console.log(attackValue)
             this.monsterHealth -= attackValue
             this.attackPlayer() 
         },
         attackPlayer(){
-            const attackValue = getRandomValue(15 , 8)
+            const attackValue = getRandomValue(12 , 5)
             this.playerHealth -= attackValue
         }
     },  
