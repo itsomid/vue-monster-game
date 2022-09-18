@@ -17,9 +17,7 @@ const app = Vue.createApp({
         playerHealthBar(){
             return { width: this.playerHealth + '%' }
         },
-        mayUseSpecialAttack(){
-          
-            
+        mayUseSpecialAttack(){    
             return this.currentRound % 3 !== 0
         }
     },
@@ -28,7 +26,6 @@ const app = Vue.createApp({
             this.currentRound ++;
             const attackValue = getRandomValue(12 , 5)
             this.monsterHealth -= attackValue
-            console.log(this.currentRound);
             this.attackPlayer() 
         },
         attackPlayer(){
@@ -41,6 +38,19 @@ const app = Vue.createApp({
             this.monsterHealth -= attackValue
             this.attackPlayer() 
         },
+        healPlayer(){
+            const healValue = getRandomValue(20,8)
+         
+            if(this.playerHealth + healValue > 100){
+                console.log(this.playerHealth)
+                this.playerHealth = 100
+            }else{
+                console.log(healValue,this.playerHealth)
+                this.playerHealth += healValue
+            }
+          
+
+        }
     },  
 })
 
